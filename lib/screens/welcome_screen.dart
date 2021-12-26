@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lets_chat/screens/registration_screen.dart';
+
+import 'login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static const id = 'welcome_screen';
@@ -14,41 +17,70 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image(
-                  height: 80.0,
-                  width: 80.0,
-                  image: AssetImage(
-                    'chatting.png',
+          Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Hero(
+                    tag: 'chatting_logo',
+                    child: Image(
+                      height: 80.0,
+                      width: 80.0,
+                      image: AssetImage(
+                        'chatting.png',
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Text(
-                'Lets Chat',
-                style: TextStyle(fontSize: 40.0),
-              ),
-            ],
-          ),
-          Material(
-            color: Colors.lightBlueAccent,
-            child: MaterialButton(
-              onPressed: () {},
-              minWidth: 300,
-              height: 40,
-              child: Text(
-                'Login',
-                style: TextStyle(color: Colors.white),
-              ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  'Lets Chat',
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ],
             ),
-            borderRadius: BorderRadius.circular(20),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Material(
+              color: Colors.lightBlueAccent,
+              child: MaterialButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, LoginScreen.id);
+                },
+                minWidth: 300,
+                height: 40,
+                child: Text(
+                  'Login',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Material(
+              color: Colors.lightBlueAccent,
+              child: MaterialButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, RegistrationScreen.id);
+                },
+                minWidth: 300,
+                height: 40,
+                child: Text(
+                  'Register',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
         ],
       ),
     );
