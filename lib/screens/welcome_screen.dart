@@ -21,6 +21,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 1),
+      upperBound: 100,
     );
 
     controller!.forward();
@@ -34,7 +35,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red.withOpacity(controller!.value),
+      // backgroundColor: Colors.red.withOpacity(controller!.value),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -60,7 +61,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   width: 20,
                 ),
                 Text(
-                  'Lets Chat',
+                  '${controller!.value.toInt()}%',
                   style: TextStyle(fontSize: 40.0),
                 ),
               ],
