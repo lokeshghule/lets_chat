@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lets_chat/screens/registration_screen.dart';
 
@@ -13,16 +14,18 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   AnimationController? controller;
-
+  Animation? animation;
   @override
   void initState() {
     super.initState();
 
     controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
-      upperBound: 100,
+      duration: Duration(milliseconds: 1300),
     );
+
+    animation =
+        ColorTween(begin: Colors.blue, end: Colors.white).animate(controller!);
 
     controller!.forward();
 
@@ -35,7 +38,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.red.withOpacity(controller!.value),
+      backgroundColor: animation!.value,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -48,22 +51,31 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   padding: const EdgeInsets.all(8.0),
                   child: Hero(
                     tag: 'chatting_logo',
-                    child: Image(
-                      height: 80.0,
-                      width: 80.0,
-                      image: AssetImage(
-                        'chatting.png',
-                      ),
+                    child: Image.asset(
+                      'assets/chatting.png',
+                      height: 70,
+                      width: 70.0,
                     ),
                   ),
                 ),
                 SizedBox(
                   width: 20,
                 ),
-                Text(
-                  '${controller!.value.toInt()}%',
-                  style: TextStyle(fontSize: 40.0),
-                ),
+                Container(
+                  child: DefaultTextStyle(
+                    style: TextStyle(fontSize: 30, color: Colors.black),
+                    child: AnimatedTextKit(
+                      totalRepeatCount: 2,
+                      pause: Duration(milliseconds: 1000),
+                      animatedTexts: [
+                        TyperAnimatedText(
+                          'Lets Chat',
+                          speed: Duration(milliseconds: 100),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
           ),
