@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:lets_chat/components/rounded_button.dart';
 import 'package:lets_chat/screens/registration_screen.dart';
 
 import 'login_screen.dart';
@@ -23,15 +24,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       vsync: this,
       duration: Duration(milliseconds: 1300),
     );
-
     animation =
         ColorTween(begin: Colors.blue, end: Colors.white).animate(controller!);
-
     controller!.forward();
-
     controller!.addListener(() {
       setState(() {});
-      print(controller!.value);
     });
   }
 
@@ -63,7 +60,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ),
                 Container(
                   child: DefaultTextStyle(
-                    style: TextStyle(fontSize: 30, color: Colors.black),
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
                     child: AnimatedTextKit(
                       totalRepeatCount: 2,
                       pause: Duration(milliseconds: 1000),
@@ -79,42 +80,20 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Material(
-              color: Colors.lightBlueAccent,
-              child: MaterialButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, LoginScreen.id);
-                },
-                minWidth: 300,
-                height: 40,
-                child: Text(
-                  'Login',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              borderRadius: BorderRadius.circular(20),
-            ),
+          RoundedButton(
+            title: 'Login',
+            colors: Colors.lightBlueAccent,
+            onPressed: () {
+              Navigator.pushNamed(context, LoginScreen.id);
+            },
           ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Material(
-              color: Colors.lightBlueAccent,
-              child: MaterialButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, RegistrationScreen.id);
-                },
-                minWidth: 300,
-                height: 40,
-                child: Text(
-                  'Register',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
+          RoundedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, RegistrationScreen.id);
+            },
+            title: 'Register',
+            colors: Colors.lightBlueAccent,
+          )
         ],
       ),
     );
