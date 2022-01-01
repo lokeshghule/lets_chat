@@ -36,13 +36,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Hero(
-                tag: 'chatting_logo',
-                child: Image.asset(
-                  'assets/chatting.png',
-                  height: 90,
-                  width: 90,
-                )),
+            Flexible(
+              child: Hero(
+                  tag: 'chatting_logo',
+                  child: Image.asset(
+                    'assets/chatting.png',
+                    height: 90,
+                    width: 90,
+                  )),
+            ),
             SizedBox(
               height: 30,
             ),

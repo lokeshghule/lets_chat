@@ -4,7 +4,6 @@ import 'package:lets_chat/screens/chat_screen.dart';
 import 'package:lets_chat/screens/login_screen.dart';
 import 'package:lets_chat/screens/registration_screen.dart';
 import 'package:lets_chat/screens/welcome_screen.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   runApp(MyApp());
